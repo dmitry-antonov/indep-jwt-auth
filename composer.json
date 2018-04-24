@@ -1,0 +1,12 @@
+{
+    "name": "dmitry/auth-test",
+    "authors": [
+        {
+            "name": "Dmitry Antonov",
+            "email": "mail@ranold.ru"
+        }
+    ],
+   "require": {
+        "firebase/php-jwt": "^5.0"
+    }
+}
