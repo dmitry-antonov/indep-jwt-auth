@@ -1,4 +1,7 @@
 (function() {
+
+    var authDomain = "http://auth.local";
+
     var makeCorsCall = function(url, params, callback) {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.responseType = "json";
@@ -51,7 +54,7 @@
 
         inputButton.addEventListener("click", function(e) {
             var params = "login=" + inputLogin.value + "&password=" + inputPassword.value + "&name=" + inputName.value;
-            makeCorsCall("http://auth.local/index.php?r=user/register", params, function(data) {
+            makeCorsCall(authDomain + "/index.php?r=user/register", params, function(data) {
                 if (data.status == 200) {
                     clearForm();
                     var authEl = document.getElementById("auth");
@@ -88,7 +91,7 @@
 
         inputButton.addEventListener("click", function(e) {
             var params = "login=" + inputLogin.value + "&password=" + inputPassword.value;
-            makeCorsCall("http://auth.local/index.php?r=user/auth", params, function(data) {
+            makeCorsCall(authDomain + "/index.php?r=user/auth", params, function(data) {
                 if (data.status == 200) {
                     localStorage.token = data.value.token;
                     clearForm();
@@ -156,7 +159,7 @@
         showLinks();
     } else {
         var params = "token=" + localStorage.token;
-        makeCorsCall("http://auth.local/index.php?r=token/check", params, function(data) {
+        makeCorsCall(authDomain + "/index.php?r=token/check", params, function(data) {
             if (data.status == "200") {
                 clearForm();
                 showHello(data.value.name);
